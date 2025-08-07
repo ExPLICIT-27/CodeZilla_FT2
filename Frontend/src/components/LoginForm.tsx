@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button_login";
+import { Input } from "@/components/ui/input_login";
 import { Label } from "@/components/ui/label";
-import { GlassCard } from "@/components/ui/glass-card";
+import { GlassCard } from "@/components/ui/glass-card_login";
 import { Eye, EyeOff, CreditCard, Lock, Mail } from "lucide-react";
 
 export const LoginForm = () => {
