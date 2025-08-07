@@ -1,4 +1,4 @@
-import { GlassCard } from "@/components/ui/glass-card";
+import { GlassCard } from "@/components/ui/glass-card_login";
 import { TrendingUp, Users, Shield, Calculator } from "lucide-react";
 
 export const CreditStats = () => {
