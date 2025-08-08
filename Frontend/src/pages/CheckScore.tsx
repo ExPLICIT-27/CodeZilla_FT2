@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -68,26 +69,27 @@ const CheckScore = () => {
   const navigate = useNavigate();
   const { submitFinancialData, loading, error, clearError } = useApp();
   const [formData, setFormData] = useState<FormData>({
-    age: "",
-    state: "",
-    education_level: "",
-    employment_type: "",
-    monthly_income: "",
-    years_current_job: "",
-    monthly_housing_cost: "",
-    has_mortgage: "",
-    bank_balance: "",
-    monthly_savings: "",
-    num_dependents: "",
-    num_credit_cards: "",
-    has_student_loan: "",
-    student_loan_payment: "",
-    has_car_loan: "",
-    car_loan_payment: "",
-    recent_credit_inquiries: "",
-    late_payments_12m: "",
-    bankruptcy_history: "",
-    years_credit_history: "",
+
+    age: '',
+    state: '',
+    education_level: '',
+    employment_type: '',
+    monthly_income: '',
+    years_current_job: '',
+    monthly_housing_cost: '',
+    has_mortgage: '',
+    bank_balance: '',
+    monthly_savings: '',
+    num_dependents: '',
+    num_credit_cards: '',
+    has_student_loan: '',
+    student_loan_payment: '',
+    has_car_loan: '',
+    car_loan_payment: '',
+    recent_credit_inquiries: '',
+    late_payments_12m: '',
+    bankruptcy_history: '',
+    years_credit_history: ''
   });
 
   const [currentSection, setCurrentSection] = useState(0);
@@ -155,25 +157,27 @@ const CheckScore = () => {
       title: "Personal Information",
       icon: User,
       fields: ["age", "state", "education_level"],
+
     },
     {
       title: "Employment & Income",
       icon: Briefcase,
-      fields: ["employment_type", "monthly_income", "years_current_job"],
+      fields: ['employment_type', 'monthly_income', 'years_current_job']
     },
     {
       title: "Housing & Financial",
       icon: Home,
-      fields: ["monthly_housing_cost", "has_mortgage", "bank_balance", "monthly_savings"],
+      fields: ['monthly_housing_cost', 'has_mortgage', 'bank_balance', 'monthly_savings']
     },
     {
       title: "Family",
       icon: Users,
-      fields: ["num_dependents"],
+      fields: ['num_dependents']
     },
     {
       title: "Credit & Loans",
       icon: CreditCard,
+
       fields: [
         "num_credit_cards",
         "has_student_loan",
@@ -181,10 +185,12 @@ const CheckScore = () => {
         "has_car_loan",
         "car_loan_payment",
       ],
+
     },
     {
       title: "Credit History",
       icon: TrendingUp,
+
       fields: [
         "recent_credit_inquiries",
         "late_payments_12m",
@@ -253,7 +259,9 @@ const CheckScore = () => {
     { value: "some_college", label: "Some College" },
     { value: "bachelors", label: "Bachelor's Degree" },
     { value: "masters", label: "Master's Degree" },
+
     { value: "doctorate", label: "Doctorate/PhD" },
+
   ];
 
   const employmentOptions = [
@@ -262,7 +270,9 @@ const CheckScore = () => {
     { value: "self_employed", label: "Self Employed" },
     { value: "unemployed", label: "Unemployed" },
     { value: "retired", label: "Retired" },
+
     { value: "student", label: "Student" },
+
   ];
 
   // Field configurations with human-friendly labels and examples
@@ -401,6 +411,7 @@ const CheckScore = () => {
       example: "32",
       type: "number",
     },
+
   };
 
   return (
@@ -496,6 +507,7 @@ const CheckScore = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6 }}
+
                     className="space-y-6">
                     {sections[currentSection].fields.map((fieldName) => {
                       const config = fieldConfig[fieldName as keyof typeof fieldConfig];
@@ -510,6 +522,7 @@ const CheckScore = () => {
                             </span>
                           </Label>
 
+
                           {config.type === "number" ? (
                             <Input
                               type="text"
@@ -517,21 +530,25 @@ const CheckScore = () => {
                               onChange={(e) => {
                                 // Only allow numbers
                                 const value = e.target.value.replace(/[^0-9]/g, "");
+
                                 handleInputChange(fieldName as keyof FormData, value);
                               }}
                               className="bg-black/20 border-white/20 text-white placeholder:text-white/40 focus:border-neon-blue focus:ring-neon-blue/20 font-cred-body"
                               placeholder={config.placeholder}
                             />
+
                           ) : config.type === "select" ? (
                             <Select
                               value={formData[fieldName as keyof FormData]}
                               onValueChange={(value) =>
                                 handleInputChange(fieldName as keyof FormData, value)
                               }>
+
                               <SelectTrigger className="bg-black/20 border-white/20 text-white focus:border-neon-blue focus:ring-neon-blue/20 font-cred-body">
                                 <SelectValue placeholder={config.placeholder} />
                               </SelectTrigger>
                               <SelectContent className="bg-black/90 border-white/20 text-white">
+
                                 {(
                                   config as { options?: { value: string; label: string }[] }
                                 ).options?.map((option) => (
