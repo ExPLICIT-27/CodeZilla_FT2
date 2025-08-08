@@ -11,6 +11,36 @@ class Database:
     def initialize(uri):
         Database.client = MongoClient(uri)
         Database.db = Database.client.get_default_database()
+        Database._create_indexes()
+    
+    @staticmethod
+    def _create_indexes():
+        """Create database indexes for better performance"""
+        try:
+            # Users collection indexes
+            users_collection = Database.get_collection(User.COLLECTION)
+            users_collection.create_index('firebase_uid', unique=True)
+            users_collection.create_index('email')
+            
+            # Financial data collection indexes  
+            financial_collection = Database.get_collection(FinancialData.COLLECTION)
+            financial_collection.create_index('firebase_uid')
+            financial_collection.create_index('created_at')
+            
+            # Credit scores collection indexes
+            scores_collection = Database.get_collection(CreditScore.COLLECTION)
+            scores_collection.create_index('firebase_uid')
+            scores_collection.create_index('created_at')
+            scores_collection.create_index('score_id', unique=True)
+            
+            # Chat history collection indexes
+            chat_collection = Database.get_collection(ChatHistory.COLLECTION)
+            chat_collection.create_index('firebase_uid')
+            chat_collection.create_index('timestamp')
+            
+            print("✅ Database indexes created successfully")
+        except Exception as e:
+            print(f"⚠️  Error creating indexes: {str(e)}")
     
     @staticmethod
     def get_collection(name):
@@ -87,7 +117,7 @@ class CreditScore:
             return CreditScore.create(score_data)
 
 class FinancialData:
-    COLLECTION = 'financial_data'
+    COLLECTION = 'credit_score_db'
     
     @staticmethod
     def create(financial_data):
