@@ -12,15 +12,15 @@ export interface PersonalInfo {
 
 export interface EmploymentIncome {
   employment_type: string;
-  annual_income: number;
+  monthly_income: number;
   job_duration: string;
 }
 
 export interface Housing {
   monthly_cost: number;
-  mortgage: number;
-  savings: number;
-  balance: number;
+  has_mortgage: boolean;
+  monthly_savings: number;
+  bank_balance: number;
 }
 
 export interface Family {
@@ -28,16 +28,18 @@ export interface Family {
 }
 
 export interface CreditLoans {
-  existing_loans: number;
-  loan_payments: number;
+  has_student_loan: boolean;
+  has_car_loan: boolean;
+  car_loan_payment: number;
+  stud_loan_payments: number;
   credit_cards: number;
 }
 
 export interface CreditBehavior {
-  inquiries: number;
+  recent_inquiries: number;
   late_payments: number;
   bankruptcy: boolean;
-  credit_history_length: number;
+  credit_history_years: number;
 }
 
 export interface FinancialData {
