@@ -49,10 +49,27 @@ const Dashboard = () => {
   };
 
   const getScoreClass = (score: number) => {
-    if (score >= 750) return "excellent";
-    if (score >= 700) return "good";
-    if (score >= 650) return "fair";
+    if (score >= 800) return "excellent";
+    if (score >= 740) return "very-good";
+    if (score >= 670) return "good";
+    if (score >= 580) return "fair";
     return "poor";
+  };
+
+  const getScoreDescription = (score: number) => {
+    if (score >= 800) return "Excellent Credit";
+    if (score >= 740) return "Very Good Credit";
+    if (score >= 670) return "Good Credit";
+    if (score >= 580) return "Fair Credit";
+    return "Poor Credit";
+  };
+
+  const getScoreColor = (score: number) => {
+    if (score >= 800) return "text-emerald-400";
+    if (score >= 740) return "text-green-400";
+    if (score >= 670) return "text-yellow-400";
+    if (score >= 580) return "text-orange-400";
+    return "text-red-400";
   };
 
   const formatDate = (dateString: string): string => {
